@@ -50,10 +50,8 @@ export const readUserOrder = async (req, res) => {
     const condition = {_id: req.params.id}
     try {
         const user = await User.findOne(condition).exec();
-        console.log(user);
         const order = await Order.find({user}).select("-users").exec()
-        console.log(order);
-        res.json(order )
+        res.json({ user, order })
     } catch (error) {
         res.status(400).json({
             message: "User khong co order"

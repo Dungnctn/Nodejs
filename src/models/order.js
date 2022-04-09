@@ -25,11 +25,18 @@ const orderSchema = new Schema({
         required: true,
         default: 0
     },
+    namePerson: {
+        firstName: { type: String, required: true },
+        lastName: { type: String, required: true }
+    },
     shipAddress: {
         address: { type: String, required: true },
         city: { type: String, required: true },
         postalCode: { type: String, required: true },
-        country: { type: String, required: true }
+    },
+    notes: {
+        type: String,
+        default: null
     }
 })
 
