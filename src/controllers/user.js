@@ -1,3 +1,4 @@
+import Order from "../models/order";
 import User from "../models/user"
 
 export const userById = async (req, res, next, id) => {
@@ -41,6 +42,21 @@ export const getUser = async (req, res) => {
     } catch (error) {
         res.status(400).json({
             message: "Khong co user"
+        })
+    }
+}
+
+export const readUserOrder = async (req, res) => {
+    const condition = {_id: req.params.id}
+    try {
+        const user = await User.findOne(condition).exec();
+        console.log(user);
+        const order = await Order.find({user}).select("-users").exec()
+        console.log(order);
+        res.json(order )
+    } catch (error) {
+        res.status(400).json({
+            message: "User khong co order"
         })
     }
 }
