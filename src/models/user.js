@@ -2,6 +2,8 @@ import mongoose from "mongoose";
 import { createHmac } from "crypto"
 import { v4 as uuidv4 } from "uuid"
 
+const { ObjectId } = mongoose.Types
+
 const userSchema = new mongoose.Schema({
     username: {
         type: String,

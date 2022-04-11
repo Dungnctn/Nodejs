@@ -1,4 +1,5 @@
 import Order from "../models/order";
+import User from "../models/user";
 
 export const createOrder = async (req, res) => {
     try {
@@ -11,4 +12,3 @@ export const createOrder = async (req, res) => {
         })
     }
 }
-

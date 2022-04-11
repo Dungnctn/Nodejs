@@ -29,12 +29,13 @@ const orderSchema = new Schema({
     info: {
         firstName: { type: String, required: true },
         lastName: { type: String, required: true },
+        phone: { type: Number, required: true },
         email: { type: String, required: true },
     },
     shipAddress: {
         address: { type: String, required: true },
         city: { type: String, required: true },
-        postalCode: { type: String, required: true },
+        postalCode: { type: String, default: null },
     },
     notes: {
         type: String,
