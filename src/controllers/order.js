@@ -12,3 +12,14 @@ export const createOrder = async (req, res) => {
         })
     }
 }
+
+export const getAllOrder = async (req, res) => {
+    try {
+        const order = await Order.find().exec();
+        res.json(order)
+    } catch (error) {
+        res.status(400).json({
+            message: "Khong co order"
+        })
+    }
+}

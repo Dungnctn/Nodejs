@@ -49,9 +49,9 @@ export const getUser = async (req, res) => {
 export const readUserOrder = async (req, res) => {
     const condition = {_id: req.params.id}
     try {
-        const user = await User.findOne(condition).exec();
-        const order = await Order.find({user}).select("-users").exec()
-        res.json({ user, order })
+        const users = await User.findOne(condition).exec();
+        const order = await Order.find({users}).select("-users").exec()
+        res.json({ users, order })
     } catch (error) {
         res.status(400).json({
             message: "User khong co order"
