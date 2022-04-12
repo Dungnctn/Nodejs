@@ -40,6 +40,10 @@ const orderSchema = new Schema({
     notes: {
         type: String,
         default: null
+    },
+    status: {
+        type: Number,
+        default: 0
     }
 })
 
