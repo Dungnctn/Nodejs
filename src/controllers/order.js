@@ -1,3 +1,4 @@
+import res from "express/lib/response";
 import Order from "../models/order";
 import User from "../models/user";
 
@@ -20,6 +21,18 @@ export const getAllOrder = async (req, res) => {
     } catch (error) {
         res.status(400).json({
             message: "Khong co order"
+        })
+    }
+}
+
+export const getOrderDetail = async (req, res) => {
+    const condition = {_id: req.params.id}
+    try {
+        const order = await Order.findOne(condition).exec();
+        res.json(order)
+    } catch (error) {
+        res.status(400).json({
+            message: "Khong co order tim kiem"
         })
     }
 }
