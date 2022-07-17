@@ -24,12 +24,16 @@ export const getAll = async (req, res) => {
 }
 
 export const readProduct = async (req, res) => {
-    const condition = {_id: req.params.id}
+    const condition = {category: req.params.id}
     try {
-        const category = await Category.findOne(condition).exec();
-        const product = await Product.find({category}).select("-category").exec();
+        // const category = await Category.findOne(condition).exec();
+        // const product = await Product.find({category}).select("-category").exec();
+        // const category = await Product.find().populate('categories', 'name')
+
+        const products = await Product.find().populate('category', 'name')
+
         res.json({
-            category, product
+            products
         })
     } catch (error) {
         res.status(400).json({
